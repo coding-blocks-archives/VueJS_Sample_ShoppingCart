@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
+type Cart = {
+  [index: number]: number
+}
 export default new Vuex.Store({
   state: {
     products: [
@@ -30,10 +32,26 @@ export default new Vuex.Store({
         vendor: 'Sony',
         price: '34999'
       },
-    ]
+    ],
+    wishlist: ([] as Array<number>),
+    cart: ({} as Cart)
   },
   mutations: {
-
+    addToWishList(state, productId: number) {
+      if (state.wishlist.indexOf(productId) === -1) {
+        state.wishlist.push(productId)
+      }
+    },
+    addToCart(state, productId: number) {
+      if (typeof state.cart[productId] === 'undefined') {
+        state.cart[productId] = 0
+      }
+      state.cart[productId]++
+    }
+  },
+  getters: {
+    isProductInWishList: (state) => (id: number) =>
+          (state.wishlist.indexOf(id) !== -1)
   },
   actions: {
 
