@@ -17,6 +17,11 @@ export default new Router({
       path: '/catalog',
       name: 'catalog',
       component: () => import('@/views/Catalog.vue')
+    },
+    {
+      path: '/wishlist',
+      name: 'wishlist',
+      component: () => import('@/views/WishList.vue')
     }
   ]
 })
