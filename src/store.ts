@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 
 Vue.use(Vuex)
 type Cart = {
   [index: number]: number
 }
-export default new Vuex.Store({
+export default new Vuex.Store<any>({
   state: {
     products: [
       {
@@ -55,5 +56,8 @@ export default new Vuex.Store({
   },
   actions: {
 
-  }
+  },
+  plugins: [
+    new VuexPersist().plugin
+  ]
 })
