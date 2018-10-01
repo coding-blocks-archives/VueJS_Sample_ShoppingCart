@@ -13,5 +13,10 @@ export default new Router({
       name: 'home',
       component: Home
     },
+    {
+      path: '/catalog',
+      name: 'catalog',
+      component: () => import('@/views/Catalog.vue')
+    }
   ]
 })
